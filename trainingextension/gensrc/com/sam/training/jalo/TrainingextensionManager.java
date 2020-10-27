@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 26 Oct 2020, 13:55:05                       ---
+ * --- Generated at 27 Oct 2020, 12:16:05                       ---
  * ----------------------------------------------------------------
  */
 package com.sam.training.jalo;
@@ -10,6 +10,7 @@ import com.sam.training.constants.TrainingextensionConstants;
 import com.sam.training.jalo.Ingredient;
 import com.sam.training.jalo.LoyaltyCard;
 import com.sam.training.jalo.Recipe;
+import com.sam.training.jalo.TrainingProduct;
 import com.sam.training.jalo.TrainingUser;
 import de.hybris.platform.directpersistence.annotation.SLDSafe;
 import de.hybris.platform.jalo.Item;
@@ -21,8 +22,11 @@ import de.hybris.platform.jalo.SessionContext;
 import de.hybris.platform.jalo.extension.Extension;
 import de.hybris.platform.jalo.extension.ExtensionManager;
 import de.hybris.platform.jalo.link.Link;
+import de.hybris.platform.jalo.security.Principal;
 import de.hybris.platform.jalo.type.ComposedType;
 import de.hybris.platform.jalo.type.JaloGenericCreationException;
+import de.hybris.platform.jalo.user.User;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,6 +41,9 @@ public class TrainingextensionManager extends Extension
 	static
 	{
 		final Map<String, Map<String, AttributeMode>> ttmp = new HashMap();
+		Map<String, AttributeMode> tmp = new HashMap<String, AttributeMode>();
+		tmp.put("loyaltyCard", AttributeMode.INITIAL);
+		ttmp.put("de.hybris.platform.jalo.user.User", Collections.unmodifiableMap(tmp));
 		DEFAULT_INITIAL_ATTRIBUTES = ttmp;
 	}
 	@Override
@@ -129,6 +136,32 @@ public class TrainingextensionManager extends Extension
 		return createRecipe( getSession().getSessionContext(), attributeValues );
 	}
 	
+	public TrainingProduct createTrainingProduct(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType("TrainingProduct");
+			return (TrainingProduct)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating TrainingProduct : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public TrainingProduct createTrainingProduct(final Map attributeValues)
+	{
+		return createTrainingProduct( getSession().getSessionContext(), attributeValues );
+	}
+	
 	public TrainingUser createTrainingUser(final SessionContext ctx, final Map attributeValues)
 	{
 		try
@@ -165,6 +198,42 @@ public class TrainingextensionManager extends Extension
 	public String getName()
 	{
 		return TrainingextensionConstants.EXTENSIONNAME;
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>User.loyaltyCard</code> attribute.
+	 * @return the loyaltyCard - LoyaltyCard
+	 */
+	public LoyaltyCard getLoyaltyCard(final SessionContext ctx, final User item)
+	{
+		return (LoyaltyCard)item.getProperty( ctx, TrainingextensionConstants.Attributes.User.LOYALTYCARD);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>User.loyaltyCard</code> attribute.
+	 * @return the loyaltyCard - LoyaltyCard
+	 */
+	public LoyaltyCard getLoyaltyCard(final User item)
+	{
+		return getLoyaltyCard( getSession().getSessionContext(), item );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>User.loyaltyCard</code> attribute. 
+	 * @param value the loyaltyCard - LoyaltyCard
+	 */
+	public void setLoyaltyCard(final SessionContext ctx, final User item, final LoyaltyCard value)
+	{
+		item.setProperty(ctx, TrainingextensionConstants.Attributes.User.LOYALTYCARD,value);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>User.loyaltyCard</code> attribute. 
+	 * @param value the loyaltyCard - LoyaltyCard
+	 */
+	public void setLoyaltyCard(final User item, final LoyaltyCard value)
+	{
+		setLoyaltyCard( getSession().getSessionContext(), item, value );
 	}
 	
 }

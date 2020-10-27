@@ -1,15 +1,15 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 26 Oct 2020, 13:55:05                       ---
+ * --- Generated at 27 Oct 2020, 12:16:05                       ---
  * ----------------------------------------------------------------
  */
 package com.sam.training.jalo;
 
-import com.sam.training.jalo.LoyaltyCard;
 import de.hybris.platform.directpersistence.annotation.SLDSafe;
 import de.hybris.platform.jalo.Item.AttributeMode;
 import de.hybris.platform.jalo.SessionContext;
+import de.hybris.platform.jalo.enumeration.EnumerationValue;
 import de.hybris.platform.jalo.user.User;
 import java.util.Collections;
 import java.util.HashMap;
@@ -22,13 +22,13 @@ import java.util.Map;
 @SuppressWarnings({"unused","cast"})
 public class TrainingUser extends User
 {
-	/** Qualifier of the <code>TrainingUser.loyaltyCard</code> attribute **/
-	public static final String LOYALTYCARD = "loyaltyCard";
+	/** Qualifier of the <code>TrainingUser.gender</code> attribute **/
+	public static final String GENDER = "gender";
 	protected static final Map<String, AttributeMode> DEFAULT_INITIAL_ATTRIBUTES;
 	static
 	{
 		final Map<String, AttributeMode> tmp = new HashMap<String, AttributeMode>(User.DEFAULT_INITIAL_ATTRIBUTES);
-		tmp.put(LOYALTYCARD, AttributeMode.INITIAL);
+		tmp.put(GENDER, AttributeMode.INITIAL);
 		DEFAULT_INITIAL_ATTRIBUTES = Collections.unmodifiableMap(tmp);
 	}
 	@Override
@@ -38,39 +38,39 @@ public class TrainingUser extends User
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>TrainingUser.loyaltyCard</code> attribute.
-	 * @return the loyaltyCard - LoyaltyCard
+	 * <i>Generated method</i> - Getter of the <code>TrainingUser.gender</code> attribute.
+	 * @return the gender - TrainingUserGender
 	 */
-	public LoyaltyCard getLoyaltyCard(final SessionContext ctx)
+	public EnumerationValue getGender(final SessionContext ctx)
 	{
-		return (LoyaltyCard)getProperty( ctx, "loyaltyCard".intern());
+		return (EnumerationValue)getProperty( ctx, "gender".intern());
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>TrainingUser.loyaltyCard</code> attribute.
-	 * @return the loyaltyCard - LoyaltyCard
+	 * <i>Generated method</i> - Getter of the <code>TrainingUser.gender</code> attribute.
+	 * @return the gender - TrainingUserGender
 	 */
-	public LoyaltyCard getLoyaltyCard()
+	public EnumerationValue getGender()
 	{
-		return getLoyaltyCard( getSession().getSessionContext() );
+		return getGender( getSession().getSessionContext() );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>TrainingUser.loyaltyCard</code> attribute. 
-	 * @param value the loyaltyCard - LoyaltyCard
+	 * <i>Generated method</i> - Setter of the <code>TrainingUser.gender</code> attribute. 
+	 * @param value the gender - TrainingUserGender
 	 */
-	public void setLoyaltyCard(final SessionContext ctx, final LoyaltyCard value)
+	public void setGender(final SessionContext ctx, final EnumerationValue value)
 	{
-		setProperty(ctx, "loyaltyCard".intern(),value);
+		setProperty(ctx, "gender".intern(),value);
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>TrainingUser.loyaltyCard</code> attribute. 
-	 * @param value the loyaltyCard - LoyaltyCard
+	 * <i>Generated method</i> - Setter of the <code>TrainingUser.gender</code> attribute. 
+	 * @param value the gender - TrainingUserGender
 	 */
-	public void setLoyaltyCard(final LoyaltyCard value)
+	public void setGender(final EnumerationValue value)
 	{
-		setLoyaltyCard( getSession().getSessionContext(), value );
+		setGender( getSession().getSessionContext(), value );
 	}
 	
 }

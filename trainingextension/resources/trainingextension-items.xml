@@ -7,6 +7,15 @@
 -->
 <items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 			xsi:noNamespaceSchemaLocation="items.xsd">
+
+	<enumtypes>
+		<enumtype code="Genders" generate="true" autocreate="true">
+			<value code="MALE"/>
+			<value code="FEMALE"/>
+			<value code="TRANSGENDER"/>
+		</enumtype>
+	</enumtypes>
+
 	<relations>
 		<relation code="IngredientRecipeRelation" localized="false" generate="true" autocreate="true">
 			<deployment table="Ing2RecRel" typecode="12005"/>
@@ -53,6 +62,30 @@
 				  extends="User"
 				  autocreate="true"
 				  generate="true">
+			<attributes>
+				<attribute qualifier="gender" type="Genders">
+					<description>TrainingUserGender</description>
+					<defaultvalue>Genders.FEMALE</defaultvalue>
+					<persistence type="property"/>
+					<modifiers read="true" write="true" optional="true"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+
+		<itemtype code="TrainingProduct"
+				  jaloclass="com.sam.training.jalo.TrainingProduct"
+				  extends="Product"
+				  generate="true"
+				  autocreate="true">
+			<attributes>
+				<attribute autocreate="true" qualifier="code" type="java.lang.String" generate="true" redeclare="true">
+					<modifiers read="true" write="true" search="true" initial="true" optional="true" unique="true"/>
+				</attribute>
+			</attributes>
+
+		</itemtype>
+
+		<itemtype code="User" autocreate="false" generate="false">
 			<attributes>
 				<attribute qualifier="loyaltyCard" type="LoyaltyCard">
 					<description>LoyaltyCard</description>
