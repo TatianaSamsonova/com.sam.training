@@ -1,0 +1,7 @@
+$catalog=productCatalog
+$version=Staged
+$catalogVersion=catalogversion(catalog(id[default=$catalog]),version[default='$version'])[unique=true,default=$catalog:$version]
+
+INSERT_UPDATE Product;code[unique=true];$catalogVersion;name
+;12345;$catalog:$version;test
+;12345678;$catalog:$version;test
