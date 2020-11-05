@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 1 Nov 2020, 10:00:41                        ---
+ * --- Generated at 5 Nov 2020, 17:29:01                        ---
  * ----------------------------------------------------------------
  */
 package com.sam.training.jalo;
@@ -29,6 +29,8 @@ import java.util.Map;
 @SuppressWarnings({"unused","cast"})
 public class Ingredient extends GenericItem
 {
+	/** Qualifier of the <code>Ingredient.name</code> attribute **/
+	public static final String NAME = "name";
 	/** Qualifier of the <code>Ingredient.recipes</code> attribute **/
 	public static final String RECIPES = "recipes";
 	/** Relation ordering override parameter constants for IngredientRecipeRelation from ((trainingextension))*/
@@ -40,6 +42,7 @@ public class Ingredient extends GenericItem
 	static
 	{
 		final Map<String, AttributeMode> tmp = new HashMap<String, AttributeMode>();
+		tmp.put(NAME, AttributeMode.INITIAL);
 		DEFAULT_INITIAL_ATTRIBUTES = Collections.unmodifiableMap(tmp);
 	}
 	@Override
@@ -61,6 +64,42 @@ public class Ingredient extends GenericItem
 			return Utilities.getMarkModifiedOverride(INGREDIENTRECIPERELATION_MARKMODIFIED);
 		}
 		return true;
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Ingredient.name</code> attribute.
+	 * @return the name
+	 */
+	public String getName(final SessionContext ctx)
+	{
+		return (String)getProperty( ctx, "name".intern());
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Ingredient.name</code> attribute.
+	 * @return the name
+	 */
+	public String getName()
+	{
+		return getName( getSession().getSessionContext() );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Ingredient.name</code> attribute. 
+	 * @param value the name
+	 */
+	public void setName(final SessionContext ctx, final String value)
+	{
+		setProperty(ctx, "name".intern(),value);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Ingredient.name</code> attribute. 
+	 * @param value the name
+	 */
+	public void setName(final String value)
+	{
+		setName( getSession().getSessionContext(), value );
 	}
 	
 	/**

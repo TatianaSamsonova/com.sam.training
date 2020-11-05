@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 1 Nov 2020, 10:00:41                        ---
+ * --- Generated at 5 Nov 2020, 17:29:01                        ---
  * ----------------------------------------------------------------
  */
 package com.sam.training.constants;
@@ -16,6 +16,7 @@ public class GeneratedTrainingextensionConstants
 	public static final String EXTENSIONNAME = "trainingextension";
 	public static class TC
 	{
+		public static final String COMPLEXITY = "Complexity".intern();
 		public static final String GENDERS = "Genders".intern();
 		public static final String INGREDIENT = "Ingredient".intern();
 		public static final String LOYALTYCARD = "LoyaltyCard".intern();
@@ -32,6 +33,12 @@ public class GeneratedTrainingextensionConstants
 	}
 	public static class Enumerations
 	{
+		public static class Complexity
+		{
+			public static final String LOW = "LOW".intern();
+			public static final String MIDDLE = "MIDDLE".intern();
+			public static final String HIGH = "HIGH".intern();
+		}
 		public static class Genders
 		{
 			public static final String MALE = "MALE".intern();

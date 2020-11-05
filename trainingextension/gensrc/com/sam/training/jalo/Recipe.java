@@ -1,18 +1,20 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 1 Nov 2020, 10:00:41                        ---
+ * --- Generated at 5 Nov 2020, 17:29:01                        ---
  * ----------------------------------------------------------------
  */
 package com.sam.training.jalo;
 
 import com.sam.training.constants.TrainingextensionConstants;
 import com.sam.training.jalo.Ingredient;
+import com.sam.training.jalo.TrainingUser;
 import de.hybris.platform.directpersistence.annotation.SLDSafe;
 import de.hybris.platform.jalo.GenericItem;
 import de.hybris.platform.jalo.Item;
 import de.hybris.platform.jalo.Item.AttributeMode;
 import de.hybris.platform.jalo.SessionContext;
+import de.hybris.platform.jalo.enumeration.EnumerationValue;
 import de.hybris.platform.jalo.type.ComposedType;
 import de.hybris.platform.jalo.type.TypeManager;
 import de.hybris.platform.util.Utilities;
@@ -29,6 +31,10 @@ import java.util.Map;
 @SuppressWarnings({"unused","cast"})
 public class Recipe extends GenericItem
 {
+	/** Qualifier of the <code>Recipe.complexity</code> attribute **/
+	public static final String COMPLEXITY = "complexity";
+	/** Qualifier of the <code>Recipe.author</code> attribute **/
+	public static final String AUTHOR = "author";
 	/** Qualifier of the <code>Recipe.ingredients</code> attribute **/
 	public static final String INGREDIENTS = "ingredients";
 	/** Relation ordering override parameter constants for IngredientRecipeRelation from ((trainingextension))*/
@@ -40,12 +46,86 @@ public class Recipe extends GenericItem
 	static
 	{
 		final Map<String, AttributeMode> tmp = new HashMap<String, AttributeMode>();
+		tmp.put(COMPLEXITY, AttributeMode.INITIAL);
+		tmp.put(AUTHOR, AttributeMode.INITIAL);
 		DEFAULT_INITIAL_ATTRIBUTES = Collections.unmodifiableMap(tmp);
 	}
 	@Override
 	protected Map<String, AttributeMode> getDefaultAttributeModes()
 	{
 		return DEFAULT_INITIAL_ATTRIBUTES;
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Recipe.author</code> attribute.
+	 * @return the author - RecipeAuthor
+	 */
+	public TrainingUser getAuthor(final SessionContext ctx)
+	{
+		return (TrainingUser)getProperty( ctx, "author".intern());
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Recipe.author</code> attribute.
+	 * @return the author - RecipeAuthor
+	 */
+	public TrainingUser getAuthor()
+	{
+		return getAuthor( getSession().getSessionContext() );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Recipe.author</code> attribute. 
+	 * @param value the author - RecipeAuthor
+	 */
+	public void setAuthor(final SessionContext ctx, final TrainingUser value)
+	{
+		setProperty(ctx, "author".intern(),value);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Recipe.author</code> attribute. 
+	 * @param value the author - RecipeAuthor
+	 */
+	public void setAuthor(final TrainingUser value)
+	{
+		setAuthor( getSession().getSessionContext(), value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Recipe.complexity</code> attribute.
+	 * @return the complexity - RecipeComplexityRate
+	 */
+	public EnumerationValue getComplexity(final SessionContext ctx)
+	{
+		return (EnumerationValue)getProperty( ctx, "complexity".intern());
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Recipe.complexity</code> attribute.
+	 * @return the complexity - RecipeComplexityRate
+	 */
+	public EnumerationValue getComplexity()
+	{
+		return getComplexity( getSession().getSessionContext() );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Recipe.complexity</code> attribute. 
+	 * @param value the complexity - RecipeComplexityRate
+	 */
+	public void setComplexity(final SessionContext ctx, final EnumerationValue value)
+	{
+		setProperty(ctx, "complexity".intern(),value);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Recipe.complexity</code> attribute. 
+	 * @param value the complexity - RecipeComplexityRate
+	 */
+	public void setComplexity(final EnumerationValue value)
+	{
+		setComplexity( getSession().getSessionContext(), value );
 	}
 	
 	/**

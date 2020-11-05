@@ -14,6 +14,11 @@
 			<value code="FEMALE"/>
 			<value code="TRANSGENDER"/>
 		</enumtype>
+		<enumtype code="Complexity" generate="true" autocreate="true">
+			<value code="LOW"/>
+			<value code="MIDDLE"/>
+			<value code="HIGH"/>
+		</enumtype>
 	</enumtypes>
 
 	<relations>
@@ -21,11 +26,11 @@
 			<deployment table="Ing2RecRel" typecode="12005"/>
 			<sourceElement type="Ingredient" qualifier="ingredients" cardinality="many">
 				<description>Ingredients</description>
-				<modifiers read="true" write="true" search="true" optional="false"/>
+				<modifiers read="true" write="true" search="true" optional="true"/>
 			</sourceElement>
 			<targetElement type="Recipe" qualifier="recipes" cardinality="many">
 				<description>Recipes</description>
-				<modifiers read="true" write="true" search="true" optional="false"/>
+				<modifiers read="true" write="true" search="true" optional="true"/>
 			</targetElement>
 		</relation>
 
@@ -38,6 +43,13 @@
 				  generate="true"
 				  autocreate="true">
 			<deployment table="Ingredient" typecode="11000"/>
+			<attributes>
+				<attribute qualifier="name" type="java.lang.String">
+					<persistence type="property"/>
+					<modifiers read="true" write="true" optional="true"/>
+				</attribute>
+
+			</attributes>
 		</itemtype>
 
 		<itemtype code="Recipe"
@@ -46,6 +58,19 @@
 				  generate="true"
 				  autocreate="true">
 			<deployment table="Recipe" typecode="12000"/>
+			<attributes>
+				<attribute qualifier="complexity" type="Complexity">
+					<description>RecipeComplexityRate</description>
+					<defaultvalue>em().getEnumerationValue("Complexity", "LOW")</defaultvalue>
+					<persistence type="property"/>
+					<modifiers read="true" write="true" optional="true"/>
+				</attribute>
+				<attribute qualifier="author" type="TrainingUser">
+					<description>RecipeAuthor</description>
+					<persistence type="property"/>
+					<modifiers read="true" write="true" optional="true"/>
+				</attribute>
+			</attributes>
 		</itemtype>
 
 		<itemtype code="LoyaltyCard"
