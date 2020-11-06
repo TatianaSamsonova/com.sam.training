@@ -38,4 +38,13 @@ public class DefaultRecipeServiceIntegrationTest extends ServicelayerTest {
         Assert.assertEquals(size+1, recipeModels.size());
 
     }
+
+    @Test
+    public void shouldReturnRecipeModelWithHighComplexity()
+    {
+        modelService.save(recipeModel);
+        List<RecipeModel> result = recipeService.getRecipesByComplexity(RECIPE_COMPLEXITY);
+
+        Assert.assertEquals(RECIPE_COMPLEXITY, result.get(0).getComplexity());
+    }
 }
