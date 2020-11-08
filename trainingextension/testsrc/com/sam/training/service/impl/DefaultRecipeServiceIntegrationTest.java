@@ -21,11 +21,13 @@ public class DefaultRecipeServiceIntegrationTest extends ServicelayerTest {
     private ModelService modelService;
     private RecipeModel recipeModel;
     private static final Complexity RECIPE_COMPLEXITY = Complexity.HIGH;
+    private static final String CODE = "test";
 
     @Before
     public void setUp(){
         recipeModel = modelService.create(RecipeModel.class);
         recipeModel.setComplexity(RECIPE_COMPLEXITY);
+        recipeModel.setCode(CODE);
     }
 
     @Test
@@ -46,5 +48,14 @@ public class DefaultRecipeServiceIntegrationTest extends ServicelayerTest {
         List<RecipeModel> result = recipeService.getRecipesByComplexity(RECIPE_COMPLEXITY);
 
         Assert.assertEquals(RECIPE_COMPLEXITY, result.get(0).getComplexity());
+    }
+
+    @Test
+    public void shouldReturnRecipeWithGivenCode()
+    {
+        modelService.save(recipeModel);
+        RecipeModel result = recipeService.getRecipeByCode(CODE);
+
+        Assert.assertEquals(CODE, result.getCode());
     }
 }

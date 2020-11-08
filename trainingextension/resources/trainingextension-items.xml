@@ -70,6 +70,12 @@
 					<persistence type="property"/>
 					<modifiers read="true" write="true" optional="true"/>
 				</attribute>
+				<attribute qualifier="name" type="java.lang.String">
+					<persistence type="property"/>
+				</attribute>
+				<attribute qualifier="code" type="java.lang.String">
+					<persistence type="property"/>
+				</attribute>
 			</attributes>
 		</itemtype>
 

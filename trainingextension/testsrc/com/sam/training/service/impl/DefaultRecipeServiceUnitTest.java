@@ -22,7 +22,8 @@ public class DefaultRecipeServiceUnitTest
     private DefaultRecipeService defaultRecipeService;
     @Mock
     private RecipeDAO recipeDAO;
-    private static final  Complexity COMPLEXITY = Complexity.HIGH;
+    private static final Complexity COMPLEXITY = Complexity.HIGH;
+    private static final String CODE = "test";
 
     @Before
     public void setUp()
@@ -67,6 +68,21 @@ public class DefaultRecipeServiceUnitTest
 
         Mockito.verify(recipeDAO).findByComplexity(COMPLEXITY);
     }
+
+    @Test
+    public void testGetRecipeByCode()
+    {
+        final RecipeModel recipe1 = new RecipeModel();
+        recipe1.setCode(CODE);
+
+        Mockito.when(recipeDAO.findByCode(CODE)).thenReturn(recipe1);
+
+        RecipeModel result = defaultRecipeService.getRecipeByCode(CODE);
+        Assert.assertEquals(CODE, result.getCode());
+
+        Mockito.verify(recipeDAO).findByCode(CODE);
+    }
+
 
     @Test(expected = IllegalArgumentException.class)
     public void testGetRecipeByComplexity_NullParam()

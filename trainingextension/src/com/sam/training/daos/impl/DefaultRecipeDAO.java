@@ -36,4 +36,16 @@ public class DefaultRecipeDAO implements RecipeDAO {
         return flexibleSearchService.<RecipeModel> search(query).getResult();
     }
 
+    @Override
+    public RecipeModel findByCode(String code) {
+        final String queryString = "SELECT {p:" + RecipeModel.PK + "} "
+                + "FROM {" + RecipeModel._TYPECODE + " AS p} "
+                + "WHERE " + "{p:" + RecipeModel.CODE + "}=?code ";
+        final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);
+        query.addQueryParameter("complexity", code);
+
+        return flexibleSearchService.<RecipeModel> search(query).getResult().get(0);
+
+    }
+
 }

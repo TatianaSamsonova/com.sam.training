@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 6 Nov 2020, 11:11:21                        ---
+ * --- Generated at 8 Nov 2020, 19:02:35                        ---
  * ----------------------------------------------------------------
  */
 package com.sam.training.jalo;
@@ -35,6 +35,10 @@ public class Recipe extends GenericItem
 	public static final String COMPLEXITY = "complexity";
 	/** Qualifier of the <code>Recipe.author</code> attribute **/
 	public static final String AUTHOR = "author";
+	/** Qualifier of the <code>Recipe.name</code> attribute **/
+	public static final String NAME = "name";
+	/** Qualifier of the <code>Recipe.code</code> attribute **/
+	public static final String CODE = "code";
 	/** Qualifier of the <code>Recipe.ingredients</code> attribute **/
 	public static final String INGREDIENTS = "ingredients";
 	/** Relation ordering override parameter constants for IngredientRecipeRelation from ((trainingextension))*/
@@ -48,6 +52,8 @@ public class Recipe extends GenericItem
 		final Map<String, AttributeMode> tmp = new HashMap<String, AttributeMode>();
 		tmp.put(COMPLEXITY, AttributeMode.INITIAL);
 		tmp.put(AUTHOR, AttributeMode.INITIAL);
+		tmp.put(NAME, AttributeMode.INITIAL);
+		tmp.put(CODE, AttributeMode.INITIAL);
 		DEFAULT_INITIAL_ATTRIBUTES = Collections.unmodifiableMap(tmp);
 	}
 	@Override
@@ -90,6 +96,42 @@ public class Recipe extends GenericItem
 	public void setAuthor(final TrainingUser value)
 	{
 		setAuthor( getSession().getSessionContext(), value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Recipe.code</code> attribute.
+	 * @return the code
+	 */
+	public String getCode(final SessionContext ctx)
+	{
+		return (String)getProperty( ctx, "code".intern());
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Recipe.code</code> attribute.
+	 * @return the code
+	 */
+	public String getCode()
+	{
+		return getCode( getSession().getSessionContext() );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Recipe.code</code> attribute. 
+	 * @param value the code
+	 */
+	public void setCode(final SessionContext ctx, final String value)
+	{
+		setProperty(ctx, "code".intern(),value);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Recipe.code</code> attribute. 
+	 * @param value the code
+	 */
+	public void setCode(final String value)
+	{
+		setCode( getSession().getSessionContext(), value );
 	}
 	
 	/**
@@ -265,6 +307,42 @@ public class Recipe extends GenericItem
 			return Utilities.getMarkModifiedOverride(INGREDIENTRECIPERELATION_MARKMODIFIED);
 		}
 		return true;
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Recipe.name</code> attribute.
+	 * @return the name
+	 */
+	public String getName(final SessionContext ctx)
+	{
+		return (String)getProperty( ctx, "name".intern());
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Recipe.name</code> attribute.
+	 * @return the name
+	 */
+	public String getName()
+	{
+		return getName( getSession().getSessionContext() );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Recipe.name</code> attribute. 
+	 * @param value the name
+	 */
+	public void setName(final SessionContext ctx, final String value)
+	{
+		setProperty(ctx, "name".intern(),value);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Recipe.name</code> attribute. 
+	 * @param value the name
+	 */
+	public void setName(final String value)
+	{
+		setName( getSession().getSessionContext(), value );
 	}
 	
 }

@@ -9,4 +9,5 @@ public interface RecipeDAO
 {
     List<RecipeModel> findRecipes();
     List<RecipeModel> findByComplexity(Complexity complexity);
+    RecipeModel findByCode(String code);
 }

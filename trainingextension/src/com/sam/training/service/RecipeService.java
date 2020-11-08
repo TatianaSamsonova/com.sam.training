@@ -8,4 +8,5 @@ import java.util.List;
 public interface RecipeService {
     List<RecipeModel> getRecipes();
     List<RecipeModel> getRecipesByComplexity(Complexity complexity);
+    RecipeModel getRecipeByCode(String code);
 }

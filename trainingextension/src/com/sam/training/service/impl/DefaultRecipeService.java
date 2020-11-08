@@ -22,6 +22,11 @@ public class DefaultRecipeService implements RecipeService {
         return recipeDAO.findByComplexity(complexity);
     }
 
+    @Override
+    public RecipeModel getRecipeByCode(String code) {
+        return recipeDAO.findByCode(code);
+    }
+
     @Required
     public void setRecipeDAO(final RecipeDAO recipeDAO){
         this.recipeDAO = recipeDAO;

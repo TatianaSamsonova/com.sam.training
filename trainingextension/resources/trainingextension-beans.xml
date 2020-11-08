@@ -8,6 +8,25 @@
 
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="beans.xsd">
 
+	<bean class="com.sam.training.data.RecipeSummaryData">
+		<description>Data object for recipe summary</description>
+		<property name="id" type="String" />
+		<property name="name" type="String" />
+		<property name="numberOfIngredients" type="String" />
+		<property name="complexity" type="String" />
+		<property name="dateOfCreation" type="java.util.Date" />
+	</bean>
+	<bean class="com.sam.training.data.IngredientData">
+		<description>Data object representing an Ingredient</description>
+		<property name="id" type="String" equals="true"/>
+		<property name="name" type="String" equals="true"/>
+	</bean>
+	<bean class="com.sam.training.data.RecipeData" template="resources/recipe-printed-template.vm">
+		<description>Data object representing a Recipe</description>
+		<property name="id" type="String" equals="true"/>
+		<property name="name" type="String"  equals="true"/>
+		<property name="ingredients" type="java.util.List&lt;com.sam.training.data.IngredientData&gt;" />
+	</bean>
 	<!--
 		Example Data POJO
 	
