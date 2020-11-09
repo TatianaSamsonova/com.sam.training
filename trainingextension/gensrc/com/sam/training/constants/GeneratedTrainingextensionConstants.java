@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 9 Nov 2020, 10:13:07                        ---
+ * --- Generated at 9 Nov 2020, 12:27:24                        ---
  * ----------------------------------------------------------------
  */
 package com.sam.training.constants;

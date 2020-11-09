@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 9 Nov 2020, 10:13:07                        ---
+ * --- Generated at 9 Nov 2020, 12:27:24                        ---
  * ----------------------------------------------------------------
  */
 package com.sam.training.jalo;
@@ -31,6 +31,8 @@ public class Ingredient extends GenericItem
 {
 	/** Qualifier of the <code>Ingredient.name</code> attribute **/
 	public static final String NAME = "name";
+	/** Qualifier of the <code>Ingredient.code</code> attribute **/
+	public static final String CODE = "code";
 	/** Qualifier of the <code>Ingredient.recipes</code> attribute **/
 	public static final String RECIPES = "recipes";
 	/** Relation ordering override parameter constants for IngredientRecipeRelation from ((trainingextension))*/
@@ -43,12 +45,49 @@ public class Ingredient extends GenericItem
 	{
 		final Map<String, AttributeMode> tmp = new HashMap<String, AttributeMode>();
 		tmp.put(NAME, AttributeMode.INITIAL);
+		tmp.put(CODE, AttributeMode.INITIAL);
 		DEFAULT_INITIAL_ATTRIBUTES = Collections.unmodifiableMap(tmp);
 	}
 	@Override
 	protected Map<String, AttributeMode> getDefaultAttributeModes()
 	{
 		return DEFAULT_INITIAL_ATTRIBUTES;
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Ingredient.code</code> attribute.
+	 * @return the code
+	 */
+	public String getCode(final SessionContext ctx)
+	{
+		return (String)getProperty( ctx, "code".intern());
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Ingredient.code</code> attribute.
+	 * @return the code
+	 */
+	public String getCode()
+	{
+		return getCode( getSession().getSessionContext() );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Ingredient.code</code> attribute. 
+	 * @param value the code
+	 */
+	public void setCode(final SessionContext ctx, final String value)
+	{
+		setProperty(ctx, "code".intern(),value);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Ingredient.code</code> attribute. 
+	 * @param value the code
+	 */
+	public void setCode(final String value)
+	{
+		setCode( getSession().getSessionContext(), value );
 	}
 	
 	/**

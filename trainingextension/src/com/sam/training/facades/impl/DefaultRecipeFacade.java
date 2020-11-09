@@ -1,5 +1,8 @@
 package com.sam.training.facades.impl;
 
+import com.sam.training.converters.IngredientConverter;
+import com.sam.training.converters.RecipeConverter;
+import com.sam.training.converters.RecipeDetailsConverter;
 import com.sam.training.data.IngredientData;
 import com.sam.training.data.RecipeData;
 import com.sam.training.data.RecipeSummaryData;
@@ -11,9 +14,14 @@ import org.springframework.beans.factory.annotation.Required;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class DefaultRecipeFacade implements RecipeFacade {
     private RecipeService recipeService;
+    private RecipeConverter recipeConverter;
+    private RecipeDetailsConverter recipeDetailsConverter;
+    private IngredientConverter ingredientConverter;
 
     @Override
     public RecipeSummaryData getRecipeDetails(String recipeCode) {
@@ -29,14 +37,7 @@ public class DefaultRecipeFacade implements RecipeFacade {
             return null;
         }
 
-        RecipeSummaryData recipeSummaryData = new RecipeSummaryData();
-        recipeSummaryData.setId(recipeModel.getCode());
-        recipeSummaryData.setComplexity(recipeModel.getComplexity().getCode());
-        recipeSummaryData.setDateOfCreation(recipeModel.getCreationtime());
-        recipeSummaryData.setName(recipeModel.getName());
-        recipeSummaryData.setNumberOfIngredients(Integer.toString(recipeModel.getIngredients().size()));
-
-        return recipeSummaryData;
+        return recipeDetailsConverter.convert(recipeModel);
     }
 
     @Override
@@ -47,21 +48,15 @@ public class DefaultRecipeFacade implements RecipeFacade {
 
         for (final RecipeModel model: recipeModels)
         {
-            final RecipeData recipeData = new RecipeData();
-            recipeData.setId(model.getPk().toString());
-            recipeData.setName(model.getName());
+            final RecipeData recipeData = recipeConverter.convert(model);
 
             final List<IngredientModel> ingredientModels = (List<IngredientModel>) model.getIngredients();
-            final List<IngredientData> ingredientDataList = new ArrayList<>();
+            final List<IngredientData> ingredientDataList = ingredientModels
+                    .stream()
+                    .map(ingredientConverter::convert)
+                    .collect(Collectors.toList());
 
-            for (IngredientModel ingredientModel:ingredientModels) {
-                IngredientData ingredientData = new IngredientData();
-                ingredientData.setId(ingredientModel.getPk().toString());
-                ingredientData.setName(ingredientModel.getName());
-                ingredientDataList.add(ingredientData);
-            }
-
-            recipeData.setIngredients(ingredientDataList);
+            Objects.requireNonNull(recipeData).setIngredients(ingredientDataList);
             recipeDataList.add(recipeData);
         }
 
@@ -72,5 +67,20 @@ public class DefaultRecipeFacade implements RecipeFacade {
     public void setRecipeService(final RecipeService recipeService)
     {
         this.recipeService = recipeService;
+    }
+
+    @Required
+    public void setRecipeConverter(final RecipeConverter recipeConverter) {
+        this.recipeConverter = recipeConverter;
+    }
+
+    @Required
+    public void setIngredientConverter(final IngredientConverter ingredientConverter) {
+        this.ingredientConverter = ingredientConverter;
+    }
+
+    @Required
+    public void setRecipeDetailsConverter(final RecipeDetailsConverter recipeDetailsConverter) {
+        this.recipeDetailsConverter = recipeDetailsConverter;
     }
 }

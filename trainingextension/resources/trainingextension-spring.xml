@@ -20,6 +20,9 @@
     <alias name="defaultRecipeFacade" alias="recipeFacade" />
     <bean id="defaultRecipeFacade" class="com.sam.training.facades.impl.DefaultRecipeFacade" >
         <property name="recipeService" ref="recipeService" />
+        <property name="ingredientConverter" ref="ingredientConverter"/>
+        <property name="recipeDetailsConverter" ref="recipeDetailsConverter"/>
+        <property name="recipeConverter" ref="recipeConverter"/>
     </bean>
     <!--
 	The hybris platform provides one single Spring application context for beans located at the jalo layer.
@@ -94,5 +97,8 @@
         <property name="flexibleSearchService" ref="flexibleSearchService"/>
     </bean>
     <bean id="recipeDAO" class="com.sam.training.daos.impl.DefaultRecipeDAO"/>
+    <bean id="ingredientConverter" class="com.sam.training.converters.IngredientConverter"/>
+    <bean id="recipeDetailsConverter" class="com.sam.training.converters.RecipeDetailsConverter"/>
+    <bean id="recipeConverter" class="com.sam.training.converters.RecipeConverter"/>
 
 </beans>
