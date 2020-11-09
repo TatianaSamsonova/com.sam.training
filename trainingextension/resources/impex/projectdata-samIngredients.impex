@@ -1,0 +1,5 @@
+INSERT_UPDATE Ingredient;pk[unique=true];name;code
+;8796093065976;green spinach;0001
+;8796093098744;carrot;0002
+;8796093131512;cucumber;0003
+;8796093164280;tomato cherry;0004

@@ -50,6 +50,7 @@
 				</attribute>
 				<attribute qualifier="code" type="java.lang.String">
 					<persistence type="property"/>
+					<modifiers read="true" write="true" optional="true"/>
 				</attribute>
 
 			</attributes>
