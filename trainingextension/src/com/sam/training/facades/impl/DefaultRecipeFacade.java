@@ -30,7 +30,7 @@ public class DefaultRecipeFacade implements RecipeFacade {
         }
 
         RecipeSummaryData recipeSummaryData = new RecipeSummaryData();
-        recipeSummaryData.setId(recipeModel.getPk().toString());
+        recipeSummaryData.setId(recipeModel.getCode());
         recipeSummaryData.setComplexity(recipeModel.getComplexity().getCode());
         recipeSummaryData.setDateOfCreation(recipeModel.getCreationtime());
         recipeSummaryData.setName(recipeModel.getName());
