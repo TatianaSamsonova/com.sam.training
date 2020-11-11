@@ -19,11 +19,41 @@
 
     <alias name="defaultRecipeFacade" alias="recipeFacade" />
     <bean id="defaultRecipeFacade" class="com.sam.training.facades.impl.DefaultRecipeFacade" >
-        <property name="recipeService" ref="recipeService" />
-        <property name="ingredientConverter" ref="ingredientConverter"/>
-        <property name="recipeDetailsConverter" ref="recipeDetailsConverter"/>
         <property name="recipeConverter" ref="recipeConverter"/>
+        <property name="recipeDetailsConverter" ref="recipeDetailsConverter"/>
+        <property name="ingredientsConverter" ref="ingredientConverter"/>
+        <property name="recipeService" ref="recipeService" />
     </bean>
+    <bean id="recipeDAO" class="com.sam.training.daos.impl.DefaultRecipeDAO"/>
+
+    <bean id="recipeConverter" parent="abstractPopulatingConverter">
+        <property name="targetClass" value="com.sam.training.data.RecipeData"/>
+        <property name="populators">
+            <list merge="true">
+                <ref bean="recipePopulator"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="recipeDetailsConverter" parent="abstractPopulatingConverter">
+        <property name="targetClass" value="com.sam.training.data.RecipeSummaryData"/>
+        <property name="populators">
+            <list merge="true">
+                <ref bean="recipeDetailsPopulator"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="ingredientConverter" parent="abstractPopulatingConverter">
+        <property name="targetClass" value="com.sam.training.data.IngredientData"/>
+        <property name="populators">
+            <list merge="true">
+                <ref bean="ingredientsPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="recipePopulator" class="com.sam.training.converters.populator.RecipePopulator"/>
+    <bean id="ingredientsPopulator" class="com.sam.training.converters.populator.IngredientsPopulator"/>
+    <bean id="recipeDetailsPopulator" class="com.sam.training.converters.populator.RecipeDetailsPopulator"/>
     <!--
 	The hybris platform provides one single Spring application context for beans located at the jalo layer.
 	Each extension can add beans to this context by specifying them at this configuration file.
@@ -96,9 +126,6 @@
         <property name="mediaService" ref="mediaService"/>
         <property name="flexibleSearchService" ref="flexibleSearchService"/>
     </bean>
-    <bean id="recipeDAO" class="com.sam.training.daos.impl.DefaultRecipeDAO"/>
-    <bean id="ingredientConverter" class="com.sam.training.converters.IngredientConverter"/>
-    <bean id="recipeDetailsConverter" class="com.sam.training.converters.RecipeDetailsConverter"/>
-    <bean id="recipeConverter" class="com.sam.training.converters.RecipeConverter"/>
+
 
 </beans>
