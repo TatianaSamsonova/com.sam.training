@@ -21,7 +21,6 @@
     <bean id="defaultRecipeFacade" class="com.sam.training.facades.impl.DefaultRecipeFacade" >
         <property name="recipeConverter" ref="recipeConverter"/>
         <property name="recipeDetailsConverter" ref="recipeDetailsConverter"/>
-        <property name="ingredientsConverter" ref="ingredientConverter"/>
         <property name="recipeService" ref="recipeService" />
     </bean>
     <bean id="recipeDAO" class="com.sam.training.daos.impl.DefaultRecipeDAO"/>
@@ -51,7 +50,9 @@
         </property>
     </bean>
 
-    <bean id="recipePopulator" class="com.sam.training.converters.populator.RecipePopulator"/>
+    <bean id="recipePopulator" class="com.sam.training.converters.populator.RecipePopulator">
+        <property name="ingredientsConverter" ref="ingredientConverter"/>
+    </bean>
     <bean id="ingredientsPopulator" class="com.sam.training.converters.populator.IngredientsPopulator"/>
     <bean id="recipeDetailsPopulator" class="com.sam.training.converters.populator.RecipeDetailsPopulator"/>
     <!--
