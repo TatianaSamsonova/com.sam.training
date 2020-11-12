@@ -15,6 +15,7 @@
 		<property name="numberOfIngredients" type="String" />
 		<property name="complexity" type="String" />
 		<property name="dateOfCreation" type="java.util.Date" />
+		<property name="lifeSpan" type="Long"/>
 	</bean>
 	<bean class="com.sam.training.data.IngredientData">
 		<description>Data object representing an Ingredient</description>

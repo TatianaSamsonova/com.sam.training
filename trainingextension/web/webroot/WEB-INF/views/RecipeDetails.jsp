@@ -18,6 +18,7 @@
     <p>Date of creation: ${recipe.dateOfCreation}</p>
     <p>Recipe's complexity: ${recipe.complexity}</p>
     <p>Number of Ingredients: ${recipe.numberOfIngredients}</p>
+    <p>Days after Creation: ${recipe.lifeSpan}</p>
 <a href="../recipes">Back to Recipe List</a>
 </body>
 </html>

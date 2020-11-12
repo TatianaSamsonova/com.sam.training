@@ -19,5 +19,6 @@ public class RecipeDetailsPopulator implements Populator<RecipeModel, RecipeSumm
         target.setDateOfCreation(source.getCreationtime());
         target.setComplexity(source.getComplexity().getCode());
         target.setNumberOfIngredients(String.valueOf(source.getIngredients().size()));
+        target.setLifeSpan(source.getDaysAfterCreation());
     }
 }
