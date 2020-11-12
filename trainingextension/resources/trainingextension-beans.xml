@@ -27,6 +27,11 @@
 		<property name="name" type="String"  equals="true"/>
 		<property name="ingredients" type="java.util.List&lt;com.sam.training.data.IngredientData&gt;" />
 	</bean>
+	<bean class="com.sam.training.data.TrainingProductDto" template="resources/trainingProduct-parameterized-constructor-template.vm">
+		<description>Dto with parametrized constructor</description>
+		<property name="trainingName" type="String"/>
+		<property name="trainingCode" type="String"/>
+	</bean>
 	<!--
 		Example Data POJO
 	
