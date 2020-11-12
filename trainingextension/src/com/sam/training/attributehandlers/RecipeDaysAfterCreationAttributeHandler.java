@@ -21,7 +21,7 @@ public class RecipeDaysAfterCreationAttributeHandler extends AbstractDynamicAttr
         final ZonedDateTime now = ZonedDateTime.now();
         if (recipeCreationDate.isAfter(now))
         {
-            return Long.valueOf(0L);
+            return 0L;
         }
         final Duration duration = Duration.between(recipeCreationDate, now);
 
