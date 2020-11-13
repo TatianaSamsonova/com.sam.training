@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 12 Nov 2020, 16:01:01                       ---
+ * --- Generated at 13 Nov 2020, 9:59:00                        ---
  * ----------------------------------------------------------------
  */
 package com.sam.training.jalo;
@@ -9,10 +9,13 @@ package com.sam.training.jalo;
 import com.sam.training.constants.TrainingextensionConstants;
 import com.sam.training.jalo.Ingredient;
 import com.sam.training.jalo.LoyaltyCard;
+import com.sam.training.jalo.ProductBundle;
 import com.sam.training.jalo.Recipe;
+import com.sam.training.jalo.SamProduct;
 import com.sam.training.jalo.TrainingProduct;
 import com.sam.training.jalo.TrainingUser;
 import de.hybris.platform.directpersistence.annotation.SLDSafe;
+import de.hybris.platform.jalo.GenericItem;
 import de.hybris.platform.jalo.Item;
 import de.hybris.platform.jalo.Item.AttributeMode;
 import de.hybris.platform.jalo.JaloBusinessException;
@@ -22,6 +25,7 @@ import de.hybris.platform.jalo.SessionContext;
 import de.hybris.platform.jalo.extension.Extension;
 import de.hybris.platform.jalo.extension.ExtensionManager;
 import de.hybris.platform.jalo.link.Link;
+import de.hybris.platform.jalo.product.Product;
 import de.hybris.platform.jalo.security.Principal;
 import de.hybris.platform.jalo.type.ComposedType;
 import de.hybris.platform.jalo.type.JaloGenericCreationException;
@@ -44,6 +48,9 @@ public class TrainingextensionManager extends Extension
 		Map<String, AttributeMode> tmp = new HashMap<String, AttributeMode>();
 		tmp.put("loyaltyCard", AttributeMode.INITIAL);
 		ttmp.put("de.hybris.platform.jalo.user.User", Collections.unmodifiableMap(tmp));
+		tmp = new HashMap<String, AttributeMode>();
+		tmp.put("price", AttributeMode.INITIAL);
+		ttmp.put("de.hybris.platform.jalo.product.Product", Collections.unmodifiableMap(tmp));
 		DEFAULT_INITIAL_ATTRIBUTES = ttmp;
 	}
 	@Override
@@ -110,6 +117,32 @@ public class TrainingextensionManager extends Extension
 		return createLoyaltyCard( getSession().getSessionContext(), attributeValues );
 	}
 	
+	public ProductBundle createProductBundle(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType("ProductBundle");
+			return (ProductBundle)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating ProductBundle : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public ProductBundle createProductBundle(final Map attributeValues)
+	{
+		return createProductBundle( getSession().getSessionContext(), attributeValues );
+	}
+	
 	public Recipe createRecipe(final SessionContext ctx, final Map attributeValues)
 	{
 		try
@@ -134,6 +167,32 @@ public class TrainingextensionManager extends Extension
 	public Recipe createRecipe(final Map attributeValues)
 	{
 		return createRecipe( getSession().getSessionContext(), attributeValues );
+	}
+	
+	public SamProduct createSamProduct(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType("SamProduct");
+			return (SamProduct)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating SamProduct : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public SamProduct createSamProduct(final Map attributeValues)
+	{
+		return createSamProduct( getSession().getSessionContext(), attributeValues );
 	}
 	
 	public TrainingProduct createTrainingProduct(final SessionContext ctx, final Map attributeValues)
@@ -234,6 +293,79 @@ public class TrainingextensionManager extends Extension
 	public void setLoyaltyCard(final User item, final LoyaltyCard value)
 	{
 		setLoyaltyCard( getSession().getSessionContext(), item, value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Product.price</code> attribute.
+	 * @return the price
+	 */
+	public Double getPrice(final SessionContext ctx, final Product item)
+	{
+		return (Double)item.getProperty( ctx, TrainingextensionConstants.Attributes.Product.PRICE);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Product.price</code> attribute.
+	 * @return the price
+	 */
+	public Double getPrice(final Product item)
+	{
+		return getPrice( getSession().getSessionContext(), item );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Product.price</code> attribute. 
+	 * @return the price
+	 */
+	public double getPriceAsPrimitive(final SessionContext ctx, final Product item)
+	{
+		Double value = getPrice( ctx,item );
+		return value != null ? value.doubleValue() : 0.0d;
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Product.price</code> attribute. 
+	 * @return the price
+	 */
+	public double getPriceAsPrimitive(final Product item)
+	{
+		return getPriceAsPrimitive( getSession().getSessionContext(), item );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Product.price</code> attribute. 
+	 * @param value the price
+	 */
+	public void setPrice(final SessionContext ctx, final Product item, final Double value)
+	{
+		item.setProperty(ctx, TrainingextensionConstants.Attributes.Product.PRICE,value);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Product.price</code> attribute. 
+	 * @param value the price
+	 */
+	public void setPrice(final Product item, final Double value)
+	{
+		setPrice( getSession().getSessionContext(), item, value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Product.price</code> attribute. 
+	 * @param value the price
+	 */
+	public void setPrice(final SessionContext ctx, final Product item, final double value)
+	{
+		setPrice( ctx, item, Double.valueOf( value ) );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Product.price</code> attribute. 
+	 * @param value the price
+	 */
+	public void setPrice(final Product item, final double value)
+	{
+		setPrice( getSession().getSessionContext(), item, value );
 	}
 	
 }

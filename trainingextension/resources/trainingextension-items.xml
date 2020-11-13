@@ -121,7 +121,32 @@
 					<modifiers read="true" write="true" search="true" initial="true" optional="true" unique="true"/>
 				</attribute>
 			</attributes>
+		</itemtype>
 
+		<itemtype code="ProductBundle"
+				  jaloclass="com.sam.training.jalo.ProductBundle"
+				  extends="Product"
+				  generate="true"
+				  autocreate="true">
+			<attributes>
+				<attribute qualifier="bundlePrice" type="java.lang.Double">
+					<persistence type="dynamic" attributeHandler="bundlePriceAttributeHandler"/>
+					<modifiers read="true" write="false" optional="true"/>
+				</attribute>
+				<attribute qualifier="firstProduct" type="SamProduct">
+					<persistence type="property"/>
+				</attribute>
+				<attribute qualifier="secondProduct" type="TrainingProduct">
+					<persistence type="property"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+
+		<itemtype code="SamProduct"
+				  jaloclass="com.sam.training.jalo.SamProduct"
+				  extends="Product"
+				  generate="true"
+				  autocreate="true">
 		</itemtype>
 
 		<itemtype code="User" autocreate="false" generate="false">
@@ -133,6 +158,16 @@
 				</attribute>
 			</attributes>
 		</itemtype>
+
+		<itemtype code="Product" autocreate="false" generate="false">
+			<attributes>
+				<attribute qualifier="price" type="java.lang.Double">
+					<persistence type="property"/>
+					<modifiers read="true" write="true" optional="true"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+
 		<!--
 		<itemtype generate="true"
 		   code="MyProduct"
