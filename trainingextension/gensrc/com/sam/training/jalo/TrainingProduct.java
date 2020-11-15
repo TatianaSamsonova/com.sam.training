@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 13 Nov 2020, 9:59:00                        ---
+ * --- Generated at 15 Nov 2020, 11:37:00                       ---
  * ----------------------------------------------------------------
  */
 package com.sam.training.jalo;

@@ -168,6 +168,23 @@
 			</attributes>
 		</itemtype>
 
+		<itemtype code="News"
+				  generate="true"
+				  autocreate="true">
+			<deployment table="News" typecode="10987"/>
+			<attributes>
+				<attribute qualifier="date" type="java.util.Date">
+					<persistence type="property"/>
+				</attribute>
+				<attribute qualifier="headline" type="java.lang.String">
+					<persistence type="property"/>
+				</attribute>
+				<attribute qualifier="content" type="java.lang.String">
+					<persistence type="property"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+
 		<!--
 		<itemtype generate="true"
 		   code="MyProduct"

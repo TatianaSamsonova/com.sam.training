@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 13 Nov 2020, 9:59:00                        ---
+ * --- Generated at 15 Nov 2020, 11:37:00                       ---
  * ----------------------------------------------------------------
  */
 package com.sam.training.jalo;
@@ -9,6 +9,7 @@ package com.sam.training.jalo;
 import com.sam.training.constants.TrainingextensionConstants;
 import com.sam.training.jalo.Ingredient;
 import com.sam.training.jalo.LoyaltyCard;
+import com.sam.training.jalo.News;
 import com.sam.training.jalo.ProductBundle;
 import com.sam.training.jalo.Recipe;
 import com.sam.training.jalo.SamProduct;
@@ -115,6 +116,32 @@ public class TrainingextensionManager extends Extension
 	public LoyaltyCard createLoyaltyCard(final Map attributeValues)
 	{
 		return createLoyaltyCard( getSession().getSessionContext(), attributeValues );
+	}
+	
+	public News createNews(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType("News");
+			return (News)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating News : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public News createNews(final Map attributeValues)
+	{
+		return createNews( getSession().getSessionContext(), attributeValues );
 	}
 	
 	public ProductBundle createProductBundle(final SessionContext ctx, final Map attributeValues)

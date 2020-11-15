@@ -57,6 +57,9 @@
     <bean id="recipeDetailsPopulator" class="com.sam.training.converters.populator.RecipeDetailsPopulator"/>
     <bean id="recipeDaysAfterCreationAttributeHandler" class="com.sam.training.attributehandlers.RecipeDaysAfterCreationAttributeHandler"/>
     <bean id="bundlePriceAttributeHandler" class="com.sam.training.attributehandlers.BundlerPriceAttributeHandler"/>
+    <bean id="recipeEventListener" class="com.sam.training.events.NewRecipeEventListener" parent="abstractEventListener">
+        <property name="modelService" ref="modelService"/>
+    </bean>
     <!--
 	The hybris platform provides one single Spring application context for beans located at the jalo layer.
 	Each extension can add beans to this context by specifying them at this configuration file.
