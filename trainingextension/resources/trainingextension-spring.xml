@@ -60,6 +60,14 @@
     <bean id="recipeEventListener" class="com.sam.training.events.NewRecipeEventListener" parent="abstractEventListener">
         <property name="modelService" ref="modelService"/>
     </bean>
+    <bean id="productDateEventListener" class="com.sam.training.events.PastDateProductListener" parent="abstractEventListener">
+        <property name="modelService" ref="modelService"/>
+    </bean>
+    <bean id="productRatingValidateInterceptor" class="com.sam.training.interceptors.ProductRatingValidateInterceptor"/>
+    <bean id="ProductInterceptorMapping" class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+        <property name="interceptor" ref="productRatingValidateInterceptor"/>
+        <property name="typeCode" value="TrainingProduct"/>
+    </bean>
     <!--
 	The hybris platform provides one single Spring application context for beans located at the jalo layer.
 	Each extension can add beans to this context by specifying them at this configuration file.
