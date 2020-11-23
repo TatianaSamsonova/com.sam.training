@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 16 Nov 2020, 15:34:26                       ---
+ * --- Generated at 23 Nov 2020, 15:56:44                       ---
  * ----------------------------------------------------------------
  */
 package com.sam.training.constants;
@@ -16,6 +16,8 @@ public class GeneratedTrainingextensionConstants
 	public static final String EXTENSIONNAME = "trainingextension";
 	public static class TC
 	{
+		public static final String AUTHOR = "Author".intern();
+		public static final String BOOK = "Book".intern();
 		public static final String COMPLEXITY = "Complexity".intern();
 		public static final String GENDERS = "Genders".intern();
 		public static final String INGREDIENT = "Ingredient".intern();
@@ -55,6 +57,7 @@ public class GeneratedTrainingextensionConstants
 	}
 	public static class Relations
 	{
+		public static final String BOOKAUTHORRELATIONS = "BookAuthorRelations".intern();
 		public static final String INGREDIENTRECIPERELATION = "IngredientRecipeRelation".intern();
 	}
 	

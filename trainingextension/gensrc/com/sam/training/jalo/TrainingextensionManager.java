@@ -1,12 +1,14 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 16 Nov 2020, 15:34:26                       ---
+ * --- Generated at 23 Nov 2020, 15:56:44                       ---
  * ----------------------------------------------------------------
  */
 package com.sam.training.jalo;
 
 import com.sam.training.constants.TrainingextensionConstants;
+import com.sam.training.jalo.Author;
+import com.sam.training.jalo.Book;
 import com.sam.training.jalo.Ingredient;
 import com.sam.training.jalo.LoyaltyCard;
 import com.sam.training.jalo.News;
@@ -64,6 +66,58 @@ public class TrainingextensionManager extends Extension
 			ret.putAll(attr);
 		}
 		return ret;
+	}
+	
+	public Author createAuthor(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType("Author");
+			return (Author)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating Author : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public Author createAuthor(final Map attributeValues)
+	{
+		return createAuthor( getSession().getSessionContext(), attributeValues );
+	}
+	
+	public Book createBook(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType("Book");
+			return (Book)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating Book : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public Book createBook(final Map attributeValues)
+	{
+		return createBook( getSession().getSessionContext(), attributeValues );
 	}
 	
 	public Ingredient createIngredient(final SessionContext ctx, final Map attributeValues)

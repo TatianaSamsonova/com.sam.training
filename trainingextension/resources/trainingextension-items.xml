@@ -33,6 +33,17 @@
 				<modifiers read="true" write="true" search="true" optional="true"/>
 			</targetElement>
 		</relation>
+		<relation code="BookAuthorRelations" localized="false" generate="true" autocreate="true">
+			<deployment table="Book2AuthRel" typecode="12006"/>
+			<sourceElement type="Book" qualifier="books" cardinality="many">
+				<description>Books</description>
+				<modifiers read="true" write="true" search="true" optional="true"/>
+			</sourceElement>
+			<targetElement type="Author" qualifier="authors" cardinality="many">
+				<description>Authors</description>
+				<modifiers read="true" write="true" search="true" optional="true"/>
+			</targetElement>
+		</relation>
 
 	</relations>
 
@@ -84,6 +95,47 @@
 					<persistence type="dynamic" attributeHandler="recipeDaysAfterCreationAttributeHandler"/>
 					<modifiers read="true" write="false"/>
 				</attribute>
+			</attributes>
+		</itemtype>
+
+		<itemtype code="Author"
+				  jaloclass="com.sam.training.jalo.Author"
+				  extends="GenericItem"
+				  generate="true"
+				  autocreate="true">
+
+			<deployment table="Author" typecode="10301"/>
+			<attributes>
+				<attribute qualifier="name" type="java.lang.String">
+					<persistence type="property"/>
+				</attribute>
+				<attribute qualifier="dateOfBirth" type="java.util.Date">
+					<persistence type="property"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+
+		<itemtype code="Book"
+				  jaloclass="com.sam.training.jalo.Book"
+				  extends="GenericItem"
+				  generate="true"
+				  autocreate="true">
+
+			<deployment table="Book" typecode="10302"/>
+			<attributes>
+				<attribute qualifier="title" type="java.lang.String">
+					<persistence type="property"/>
+				</attribute>
+				<attribute qualifier="cover" type="Media">
+					<persistence type="property"/>
+				</attribute>
+				<attribute qualifier="content" type="Media">
+					<persistence type="property"/>
+				</attribute>
+				<attribute qualifier="year" type="java.lang.Long">
+					<persistence type="property"/>
+				</attribute>
+
 			</attributes>
 		</itemtype>
 
