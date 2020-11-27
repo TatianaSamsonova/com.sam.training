@@ -67,6 +67,42 @@
 			</attributes>
 		</itemtype>
 
+		<itemtype code="Supplier"
+				  jaloclass="com.sam.training.jalo.Supplier"
+				  extends="GenericItem"
+				  generate="true"
+				  autocreate="true">
+
+			<deployment table="Supplier" typecode="10303"/>
+			<custom-properties>
+				<property name="catalogItemType">
+					<value>java.lang.Boolean.TRUE</value>
+				</property>
+				<property name="catalogVersionAttributeQualifier">
+					<value>"catalogVersion"</value>
+				</property>
+				<property name="uniqueKeyAttributeQualifier">
+					<value>"code"</value>
+				</property>
+			</custom-properties>
+			<attributes>
+				<attribute qualifier="code" type="java.lang.String">
+					<modifiers read="true" write="true" search="true" optional="false" initial="true"/>
+					<persistence type="property"/>
+				</attribute>
+				<attribute qualifier="name" type="java.lang.String">
+					<persistence type="property"/>
+				</attribute>
+				<attribute qualifier="description" type="java.lang.String">
+					<persistence type="property"/>
+				</attribute>
+				<attribute qualifier="catalogVersion" type="CatalogVersion">
+					<modifiers read="true" write="false" search="true" initial="true" optional="false"/>
+					<persistence type="property"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+
 		<itemtype code="Recipe"
 				  jaloclass="com.sam.training.jalo.Recipe"
 				  extends="GenericItem"
@@ -176,6 +212,9 @@
 					<persistence type="property"/>
 					<modifiers read="true" write="true" search="true" optional="true"/>
 					<defaultvalue>java.lang.Long.valueOf(1)</defaultvalue>
+				</attribute>
+				<attribute qualifier="supplier" type="Supplier" generate="true">
+					<persistence type="property"/>
 				</attribute>
 			</attributes>
 		</itemtype>

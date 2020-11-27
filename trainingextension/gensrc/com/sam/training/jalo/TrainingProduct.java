@@ -1,11 +1,12 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 23 Nov 2020, 17:26:38                       ---
+ * --- Generated at 27 Nov 2020, 9:51:13                        ---
  * ----------------------------------------------------------------
  */
 package com.sam.training.jalo;
 
+import com.sam.training.jalo.Supplier;
 import de.hybris.platform.directpersistence.annotation.SLDSafe;
 import de.hybris.platform.jalo.Item.AttributeMode;
 import de.hybris.platform.jalo.SessionContext;
@@ -23,11 +24,14 @@ public class TrainingProduct extends Product
 {
 	/** Qualifier of the <code>TrainingProduct.rating</code> attribute **/
 	public static final String RATING = "rating";
+	/** Qualifier of the <code>TrainingProduct.supplier</code> attribute **/
+	public static final String SUPPLIER = "supplier";
 	protected static final Map<String, AttributeMode> DEFAULT_INITIAL_ATTRIBUTES;
 	static
 	{
 		final Map<String, AttributeMode> tmp = new HashMap<String, AttributeMode>(Product.DEFAULT_INITIAL_ATTRIBUTES);
 		tmp.put(RATING, AttributeMode.INITIAL);
+		tmp.put(SUPPLIER, AttributeMode.INITIAL);
 		DEFAULT_INITIAL_ATTRIBUTES = Collections.unmodifiableMap(tmp);
 	}
 	@Override
@@ -107,6 +111,42 @@ public class TrainingProduct extends Product
 	public void setRating(final long value)
 	{
 		setRating( getSession().getSessionContext(), value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>TrainingProduct.supplier</code> attribute.
+	 * @return the supplier
+	 */
+	public Supplier getSupplier(final SessionContext ctx)
+	{
+		return (Supplier)getProperty( ctx, "supplier".intern());
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>TrainingProduct.supplier</code> attribute.
+	 * @return the supplier
+	 */
+	public Supplier getSupplier()
+	{
+		return getSupplier( getSession().getSessionContext() );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>TrainingProduct.supplier</code> attribute. 
+	 * @param value the supplier
+	 */
+	public void setSupplier(final SessionContext ctx, final Supplier value)
+	{
+		setProperty(ctx, "supplier".intern(),value);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>TrainingProduct.supplier</code> attribute. 
+	 * @param value the supplier
+	 */
+	public void setSupplier(final Supplier value)
+	{
+		setSupplier( getSession().getSessionContext(), value );
 	}
 	
 }

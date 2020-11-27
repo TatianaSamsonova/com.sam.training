@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 23 Nov 2020, 17:26:38                       ---
+ * --- Generated at 27 Nov 2020, 9:51:13                        ---
  * ----------------------------------------------------------------
  */
 package com.sam.training.jalo;
@@ -15,6 +15,7 @@ import com.sam.training.jalo.News;
 import com.sam.training.jalo.ProductBundle;
 import com.sam.training.jalo.Recipe;
 import com.sam.training.jalo.SamProduct;
+import com.sam.training.jalo.Supplier;
 import com.sam.training.jalo.TrainingProduct;
 import com.sam.training.jalo.TrainingUser;
 import de.hybris.platform.directpersistence.annotation.SLDSafe;
@@ -274,6 +275,32 @@ public class TrainingextensionManager extends Extension
 	public SamProduct createSamProduct(final Map attributeValues)
 	{
 		return createSamProduct( getSession().getSessionContext(), attributeValues );
+	}
+	
+	public Supplier createSupplier(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType("Supplier");
+			return (Supplier)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating Supplier : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public Supplier createSupplier(final Map attributeValues)
+	{
+		return createSupplier( getSession().getSessionContext(), attributeValues );
 	}
 	
 	public TrainingProduct createTrainingProduct(final SessionContext ctx, final Map attributeValues)

@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 23 Nov 2020, 17:26:38                       ---
+ * --- Generated at 27 Nov 2020, 9:51:13                        ---
  * ----------------------------------------------------------------
  */
 package com.sam.training.constants;
@@ -26,6 +26,7 @@ public class GeneratedTrainingextensionConstants
 		public static final String PRODUCTBUNDLE = "ProductBundle".intern();
 		public static final String RECIPE = "Recipe".intern();
 		public static final String SAMPRODUCT = "SamProduct".intern();
+		public static final String SUPPLIER = "Supplier".intern();
 		public static final String TRAININGPRODUCT = "TrainingProduct".intern();
 		public static final String TRAININGUSER = "TrainingUser".intern();
 	}
